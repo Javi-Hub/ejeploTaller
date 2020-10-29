@@ -136,11 +136,6 @@ public class CocheDAO {
                   resultado.getString(4), resultado.getString(5)
                 );
                 lista.add(coche);
-                /*System.out.print(resultado.getString(2) + " - ");
-                System.out.print(resultado.getString(3) + " - ");
-                System.out.print(resultado.getString(4) + " - ");
-                System.out.println(resultado.getString(5));*/
-
             }
             return lista;
         } catch (SQLException sqle){
