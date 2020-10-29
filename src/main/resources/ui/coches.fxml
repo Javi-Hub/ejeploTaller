@@ -19,10 +19,10 @@
         <Menu mnemonicParsing="false" text="File">
           <items>
             <MenuItem mnemonicParsing="false" text="New" />
-            <MenuItem mnemonicParsing="false" text="Open…" />
+            <MenuItem fx:id="menuConectar" mnemonicParsing="false" onAction="#conectarBBDD" text="Conectar" />
             <Menu mnemonicParsing="false" text="Open Recent" />
             <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Close" />
+            <MenuItem fx:id="menuDesconectar" mnemonicParsing="false" onAction="#desconectarBBDD" text="Desconectar" />
             <MenuItem mnemonicParsing="false" text="Save" />
             <MenuItem mnemonicParsing="false" text="Save As…" />
             <MenuItem mnemonicParsing="false" text="Revert" />

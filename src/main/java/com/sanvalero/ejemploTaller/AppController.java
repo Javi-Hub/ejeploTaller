@@ -56,7 +56,26 @@ public class AppController implements Initializable{
     }
 
     @FXML
-    public void guardarCoche(Event event) throws SQLException {
+    public void conectarBBDD(){
+        cocheDAO = new CocheDAO();
+        cocheDAO.conectar();
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Conexión Base de Datos");
+        alert.setContentText("Base de Datos Conectada");
+        alert.show();
+    }
+
+    @FXML
+    public void desconectarBBDD (){
+        cocheDAO.desconectar();
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Desconexión Base de Datos");
+        alert.setContentText("Base de Datos Desconectada");
+        alert.show();
+    }
+
+    @FXML
+    public void guardarCoche(Event event) {
         String matricula = tfMatricula.getText();
         if(matricula.equals("")){
             //TODO Error de que falta indicar la matricula como campo obligatorio
@@ -69,12 +88,18 @@ public class AppController implements Initializable{
             String modelo = tfModelo.getText();
             String tipo = cbTipo.getSelectionModel().getSelectedItem();
             Coche coche = new Coche(matricula, marca, modelo, tipo);
-            cocheDAO.guardarCoche(coche);
+            try {
+                cocheDAO.guardarCoche(coche);
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
         }
+        listaCoches = FXCollections.observableArrayList(cocheDAO.obtenerCoches());
+        lvLista.setItems(listaCoches);
     }
 
     @FXML
-    public void modificarCoche(Event event) throws SQLException {
+    public void modificarCoche(Event event) {
         String matricula = tfMatricula.getText();
         if(matricula.equals("")){
             //TODO Error de que falta indicar la matricula como campo obligatorio
@@ -87,12 +112,16 @@ public class AppController implements Initializable{
             String modelo = tfModelo.getText();
             String tipo = cbTipo.getSelectionModel().getSelectedItem();
             Coche coche = new Coche(matricula, marca, modelo, tipo);
-            cocheDAO.modificarCoche(coche);
+            try {
+                cocheDAO.modificarCoche(coche);
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
         }
     }
 
     @FXML
-    public void eliminarCoche(Event event) throws SQLException {
+    public void eliminarCoche(Event event) {
         String matricula = JOptionPane.showInputDialog("Introduce la mátricula");
         if(matricula.equals("")){
             //TODO Error de que falta indicar la matricula como campo obligatorio
@@ -102,7 +131,11 @@ public class AppController implements Initializable{
             alert.show();
         } else {
             Coche coche = new Coche(matricula);
-            cocheDAO.eliminarCoche(coche);
+            try {
+                cocheDAO.eliminarCoche(coche);
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
         }
     }
 
