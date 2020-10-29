@@ -55,4 +55,9 @@ public class Coche {
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
+
+    public String toString(){
+        return matricula + "-" + marca + "-" + modelo + "-" + tipo;
+    }
+
 }

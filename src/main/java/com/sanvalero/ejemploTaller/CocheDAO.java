@@ -123,7 +123,7 @@ public class CocheDAO {
 
     }
 
-    public void obtenerCoches(){
+    public List<Coche> obtenerCoches(){
         String sql = "SELECT * FROM coches;";
         try {
             PreparedStatement sentencia = conexion.prepareStatement(sql);
@@ -131,15 +131,22 @@ public class CocheDAO {
             List<Coche> lista = new ArrayList<Coche>();
             while(resultado.next()){
 
+                Coche coche = new Coche(
+                  resultado.getString(2), resultado.getString(3),
+                  resultado.getString(4), resultado.getString(5)
+                );
+                lista.add(coche);
                 /*System.out.print(resultado.getString(2) + " - ");
                 System.out.print(resultado.getString(3) + " - ");
                 System.out.print(resultado.getString(4) + " - ");
                 System.out.println(resultado.getString(5));*/
 
             }
+            return lista;
         } catch (SQLException sqle){
             sqle.printStackTrace();
         }
+        return null;
     }
 
 }

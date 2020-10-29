@@ -11,6 +11,7 @@ import javafx.scene.control.*;
 import javax.swing.*;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.Observable;
 import java.util.ResourceBundle;
 
 /**
@@ -38,6 +39,10 @@ public class AppController implements Initializable{
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ObservableList<String> items = FXCollections.observableArrayList("Monovolumen", "Turismo", "SUV", "Motocicleta");
         cbTipo.setItems(items);
+
+        listaCoches = FXCollections.observableArrayList(cocheDAO.obtenerCoches());
+        lvLista.setItems(listaCoches);
+
 
     }
 
