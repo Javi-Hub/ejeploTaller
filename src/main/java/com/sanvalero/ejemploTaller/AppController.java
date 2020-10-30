@@ -8,7 +8,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 
-import javax.swing.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -55,6 +54,7 @@ public class AppController implements Initializable{
         tfMarca.setText("");
         tfModelo.setText("");
         cbTipo.setValue(null);
+        lbEstado.setText("");
     }
 
     @FXML
@@ -83,7 +83,7 @@ public class AppController implements Initializable{
             //TODO Error de que falta indicar la matricula como campo obligatorio
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Warning");
-            alert.setContentText("El coche ya existe");
+            alert.setContentText("Debes ingresar la matrícula del vehículo");
             alert.show();
         }else {
             String marca = tfMarca.getText();
