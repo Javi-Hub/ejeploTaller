@@ -41,8 +41,6 @@ public class AppController implements Initializable{
 
         listaCoches = FXCollections.observableArrayList(cocheDAO.obtenerCoches());
         lvLista.setItems(listaCoches);
-
-
     }
 
     @FXML
@@ -51,7 +49,6 @@ public class AppController implements Initializable{
         tfMarca.setText("");
         tfModelo.setText("");
         cbTipo.setValue(null);
-
     }
 
     @FXML
