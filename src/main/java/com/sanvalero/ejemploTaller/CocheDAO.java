@@ -74,10 +74,7 @@ public class CocheDAO {
             sentencia = conexion.prepareStatement(sql);
             sentencia.setString(1, coche.getMatricula());
             sentencia.executeUpdate();
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Eliminar Coche");
-            alert.setContentText("El coche se ha eliminado correctamente");
-            alert.show();
+
         } catch (SQLException sqle){
             sqle.printStackTrace();
         } finally {
@@ -102,10 +99,7 @@ public class CocheDAO {
            sentencia.setString(4, coche.getTipo());
            sentencia.setString(5, JOptionPane.showInputDialog("Introduce la matrícula del vehículo que deseas modificar"));
            sentencia.executeUpdate();
-           Alert alert = new Alert(Alert.AlertType.INFORMATION);
-           alert.setTitle("Modificar Coche");
-           alert.setContentText("El coche se ha modificado correctamente");
-           alert.show();
+
        } catch (SQLException sqle){
            sqle.printStackTrace();
        }finally {

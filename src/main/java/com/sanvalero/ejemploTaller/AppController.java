@@ -38,7 +38,13 @@ public class AppController implements Initializable{
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ObservableList<String> items = FXCollections.observableArrayList("Monovolumen", "Turismo", "SUV", "Moto", "Furgoneta");
         cbTipo.setItems(items);
+        cargarDatos();
 
+
+    }
+
+    @FXML
+    public void cargarDatos(){
         listaCoches = FXCollections.observableArrayList(cocheDAO.obtenerCoches());
         lvLista.setItems(listaCoches);
     }
@@ -87,8 +93,8 @@ public class AppController implements Initializable{
             cocheDAO.guardarCoche(coche);
             lbEstado.setText("Coche guardado correctamente");
         }
-        listaCoches = FXCollections.observableArrayList(cocheDAO.obtenerCoches());
-        lvLista.setItems(listaCoches);
+
+        cargarDatos();
     }
 
     @FXML
@@ -106,10 +112,10 @@ public class AppController implements Initializable{
             String tipo = cbTipo.getSelectionModel().getSelectedItem();
             Coche coche = new Coche(matricula, marca, modelo, tipo);
             cocheDAO.modificarCoche(coche);
+            lbEstado.setText("El coche se ha modificado correctamente");
 
         }
-        listaCoches = FXCollections.observableArrayList(cocheDAO.obtenerCoches());
-        lvLista.setItems(listaCoches);
+        cargarDatos();
     }
 
     @FXML
@@ -123,9 +129,9 @@ public class AppController implements Initializable{
         } else {
             Coche coche = new Coche(tfMatricula.getText());
             cocheDAO.eliminarCoche(coche);
+            lbEstado.setText("El coche se ha eliminado correctamente");
         }
-        listaCoches = FXCollections.observableArrayList(cocheDAO.obtenerCoches());
-        lvLista.setItems(listaCoches);
+        cargarDatos();
     }
 
     public void obtenerCoche(Event event){
