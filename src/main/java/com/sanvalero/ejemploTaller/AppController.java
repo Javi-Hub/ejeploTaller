@@ -25,7 +25,6 @@ public class AppController implements Initializable{
     public Label lbEstado;
     public ObservableList<Coche> listaCoches;
 
-
     private CocheDAO cocheDAO;
 
     public AppController(){
