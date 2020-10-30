@@ -42,7 +42,7 @@ public class CocheDAO {
         }
     }
 
-    public void guardarCoche(Coche coche) throws SQLException {
+    public void guardarCoche(Coche coche) {
         String sql = "INSERT INTO coches (matricula, marca, modelo, tipo) VALUES (?, ?, ?, ?);";
         PreparedStatement sentencia = null;
         try {
@@ -70,7 +70,7 @@ public class CocheDAO {
         }
     }
 
-    public void eliminarCoche(Coche coche) throws SQLException {
+    public void eliminarCoche(Coche coche) {
         String sql = "DELETE FROM coches WHERE matricula = ?;";
         PreparedStatement sentencia = null;
         try {
@@ -94,7 +94,7 @@ public class CocheDAO {
         }
     }
 
-    public void modificarCoche(Coche coche) throws SQLException {
+    public void modificarCoche(Coche coche) {
     String sql = "UPDATE coches SET matricula = ?, marca = ?, modelo = ?, tipo = ? WHERE matricula = ?";
     PreparedStatement sentencia = null;
        try {
