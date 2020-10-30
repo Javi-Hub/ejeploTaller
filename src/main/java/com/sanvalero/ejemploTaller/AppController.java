@@ -88,11 +88,7 @@ public class AppController implements Initializable{
             String modelo = tfModelo.getText();
             String tipo = cbTipo.getSelectionModel().getSelectedItem();
             Coche coche = new Coche(matricula, marca, modelo, tipo);
-            try {
-                cocheDAO.guardarCoche(coche);
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            }
+            cocheDAO.guardarCoche(coche);
         }
         listaCoches = FXCollections.observableArrayList(cocheDAO.obtenerCoches());
         lvLista.setItems(listaCoches);
