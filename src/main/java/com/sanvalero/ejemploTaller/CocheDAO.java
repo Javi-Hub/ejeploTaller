@@ -53,10 +53,6 @@ public class CocheDAO {
             sentencia.setString(3, coche.getModelo());
             sentencia.setString(4, coche.getTipo());
             sentencia.executeUpdate();
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Guardar Coche");
-            alert.setContentText("El coche se ha guardado correctamente");
-            alert.show();
 
         } catch (SQLException sqle){
             sqle.printStackTrace();

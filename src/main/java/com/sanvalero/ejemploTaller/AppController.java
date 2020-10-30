@@ -23,6 +23,7 @@ public class AppController implements Initializable{
     public TextField tfModelo;
     public ComboBox<String> cbTipo;
     public ListView<Coche> lvLista;
+    public Label lbEstado;
     public ObservableList<Coche> listaCoches;
 
 
@@ -35,7 +36,7 @@ public class AppController implements Initializable{
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        ObservableList<String> items = FXCollections.observableArrayList("Monovolumen", "Turismo", "SUV", "Motocicleta");
+        ObservableList<String> items = FXCollections.observableArrayList("Monovolumen", "Turismo", "SUV", "Moto", "Furgoneta");
         cbTipo.setItems(items);
 
         listaCoches = FXCollections.observableArrayList(cocheDAO.obtenerCoches());
@@ -87,6 +88,7 @@ public class AppController implements Initializable{
             String tipo = cbTipo.getSelectionModel().getSelectedItem();
             Coche coche = new Coche(matricula, marca, modelo, tipo);
             cocheDAO.guardarCoche(coche);
+            lbEstado.setText("Coche guardado correctamente");
         }
         listaCoches = FXCollections.observableArrayList(cocheDAO.obtenerCoches());
         lvLista.setItems(listaCoches);
@@ -115,11 +117,11 @@ public class AppController implements Initializable{
 
     @FXML
     public void eliminarCoche(Event event) {
-        if(tfMatricula.getText().equals("")){
+        if(tfMatricula.getText() == null){
             //TODO Error de que falta indicar la matricula como campo obligatorio
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Warning");
-            alert.setContentText("Falta ingresar la matrícula");
+            alert.setContentText("Vehículo no seleccionado");
             alert.show();
         } else {
             Coche coche = new Coche(tfMatricula.getText());
