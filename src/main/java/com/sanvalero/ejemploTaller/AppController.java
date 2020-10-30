@@ -118,6 +118,8 @@ public class AppController implements Initializable{
                 throwables.printStackTrace();
             }
         }
+        listaCoches = FXCollections.observableArrayList(cocheDAO.obtenerCoches());
+        lvLista.setItems(listaCoches);
     }
 
     @FXML
@@ -137,6 +139,8 @@ public class AppController implements Initializable{
                 throwables.printStackTrace();
             }
         }
+        listaCoches = FXCollections.observableArrayList(cocheDAO.obtenerCoches());
+        lvLista.setItems(listaCoches);
     }
 
 

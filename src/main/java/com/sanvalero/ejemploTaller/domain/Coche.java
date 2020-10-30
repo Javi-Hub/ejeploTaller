@@ -59,5 +59,4 @@ public class Coche {
     public String toString(){
         return matricula + "-" + marca + "-" + modelo + "-" + tipo;
     }
-
 }
