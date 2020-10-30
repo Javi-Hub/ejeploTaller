@@ -115,15 +115,14 @@ public class AppController implements Initializable{
 
     @FXML
     public void eliminarCoche(Event event) {
-        String matricula = JOptionPane.showInputDialog("Introduce la mátricula");
-        if(matricula.equals("")){
+        if(tfMatricula.getText().equals("")){
             //TODO Error de que falta indicar la matricula como campo obligatorio
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Warning");
             alert.setContentText("Falta ingresar la matrícula");
             alert.show();
         } else {
-            Coche coche = new Coche(matricula);
+            Coche coche = new Coche(tfMatricula.getText());
             cocheDAO.eliminarCoche(coche);
         }
         listaCoches = FXCollections.observableArrayList(cocheDAO.obtenerCoches());
