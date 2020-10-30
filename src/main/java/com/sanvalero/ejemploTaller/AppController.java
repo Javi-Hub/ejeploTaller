@@ -75,11 +75,11 @@ public class AppController implements Initializable{
     @FXML
     public void guardarCoche(Event event) {
         String matricula = tfMatricula.getText();
-        if(matricula.equals("")){
+        if(matricula.equals(tfMatricula.getText())){
             //TODO Error de que falta indicar la matricula como campo obligatorio
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Warning");
-            alert.setContentText("Falta ingresar la matrícula");
+            alert.setContentText("El coche ya existe");
             alert.show();
         }else {
             String marca = tfMarca.getText();
