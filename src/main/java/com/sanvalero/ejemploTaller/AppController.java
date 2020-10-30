@@ -10,8 +10,6 @@ import javafx.scene.control.*;
 
 import javax.swing.*;
 import java.net.URL;
-import java.sql.SQLException;
-import java.util.Observable;
 import java.util.ResourceBundle;
 
 /**
@@ -24,7 +22,7 @@ public class AppController implements Initializable{
     public TextField tfMarca;
     public TextField tfModelo;
     public ComboBox<String> cbTipo;
-    public ListView lvLista;
+    public ListView<Coche> lvLista;
     public ObservableList<Coche> listaCoches;
 
 
@@ -108,11 +106,8 @@ public class AppController implements Initializable{
             String modelo = tfModelo.getText();
             String tipo = cbTipo.getSelectionModel().getSelectedItem();
             Coche coche = new Coche(matricula, marca, modelo, tipo);
-            try {
-                cocheDAO.modificarCoche(coche);
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            }
+            cocheDAO.modificarCoche(coche);
+
         }
         listaCoches = FXCollections.observableArrayList(cocheDAO.obtenerCoches());
         lvLista.setItems(listaCoches);
@@ -129,15 +124,19 @@ public class AppController implements Initializable{
             alert.show();
         } else {
             Coche coche = new Coche(matricula);
-            try {
-                cocheDAO.eliminarCoche(coche);
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            }
+            cocheDAO.eliminarCoche(coche);
         }
         listaCoches = FXCollections.observableArrayList(cocheDAO.obtenerCoches());
         lvLista.setItems(listaCoches);
     }
+
+    public void obtenerCoche(Event event){
+        tfMatricula.setText(lvLista.getSelectionModel().selectedItemProperty().getValue().getMatricula());
+        tfMarca.setText(lvLista.getSelectionModel().selectedItemProperty().get().getMarca());
+        tfModelo.setText(lvLista.getSelectionModel().selectedItemProperty().getValue().getModelo());
+        cbTipo.setValue(String.valueOf(lvLista.getSelectionModel().selectedItemProperty().getValue().getTipo()));
+    }
+
 
 
 }
