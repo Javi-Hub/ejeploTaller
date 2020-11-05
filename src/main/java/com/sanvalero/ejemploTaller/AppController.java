@@ -37,8 +37,6 @@ public class AppController implements Initializable{
         ObservableList<String> items = FXCollections.observableArrayList("Monovolumen", "Turismo", "SUV", "Moto", "Furgoneta");
         cbTipo.setItems(items);
         cargarDatos();
-
-
     }
 
     @FXML

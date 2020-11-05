@@ -1,7 +1,6 @@
 package com.sanvalero.ejemploTaller;
 
 import com.sanvalero.ejemploTaller.domain.Coche;
-import javafx.scene.control.Alert;
 
 import javax.swing.*;
 import java.sql.*;
@@ -16,7 +15,7 @@ public class CocheDAO {
 
     private Connection conexion;
     private final String USUARIO = "javier";
-    private final String PASSWORD = "javiertaller";
+    private final String PASSWORD = "javier2";
 
     public void conectar(){
 
